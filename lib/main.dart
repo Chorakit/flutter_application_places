@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_application_places/screens/places.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 final colorScheme = ColorScheme.fromSeed(
@@ -11,18 +12,11 @@ final theme = ThemeData().copyWith(
   colorScheme: colorScheme,
   scaffoldBackgroundColor: colorScheme.surface,
   textTheme: GoogleFonts.ubuntuCondensedTextTheme().copyWith(
-    titleSmall: GoogleFonts.ubuntuCondensed(
-      fontWeight: FontWeight.bold,
-    ),
-    titleMedium: GoogleFonts.ubuntuCondensed(
-      fontWeight: FontWeight.bold,
-    ),
-    titleLarge: GoogleFonts.ubuntuCondensed(
-      fontWeight: FontWeight.bold,
-    ),
+    titleSmall: GoogleFonts.ubuntuCondensed(fontWeight: FontWeight.bold),
+    titleMedium: GoogleFonts.ubuntuCondensed(fontWeight: FontWeight.bold),
+    titleLarge: GoogleFonts.ubuntuCondensed(fontWeight: FontWeight.bold),
   ),
 );
-
 
 void main() {
   runApp(const MyApp());
@@ -36,8 +30,8 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter Demo',
-      theme: theme
-      home: Text("data"),
+      theme: theme,
+      home: const PlacesScreen(),
     );
   }
 }
