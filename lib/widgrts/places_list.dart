@@ -1,13 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_application_places/models/place.dart';
+import 'package:flutter_application_places/providers/use_places.dart';
+import 'package:flutter_application_places/screens/places_detail.dart';
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 
-class PlacesList extends StatelessWidget {
+class PlacesList extends ConsumerWidget {
   const PlacesList({super.key, required this.places});
 
   final List<Place> places;
 
   @override
-  Widget build(BuildContext context) {
+  Widget build(BuildContext context, WidgetRef ref) {
+    final places = ref.watch(userPlacesProvider);
+
     if (places.isEmpty) {
       return Center(
         child: Text(
@@ -28,6 +33,13 @@ class PlacesList extends StatelessWidget {
                 color: Theme.of(context).colorScheme.onSurface,
               ),
             ),
+            onTap: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (ctx) => PlacesDetailScreen(place: places[index]),
+                ),
+              );
+            },
           ),
     );
   }
